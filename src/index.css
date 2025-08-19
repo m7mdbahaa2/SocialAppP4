@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@font-face {
+  font-family: Ubuntu-Bold;
+  src: url(./assets/fonts/Ubuntu-Bold.ttf);
+}
+@font-face {
+  font-family: Ubuntu-normal;
+  src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+@theme {
+  --font-logo: Ubuntu-Bold;
+  --font-boyd: Ubuntu-Regular;
+}
+
+@layer base {
+  body {
+    @apply font-logo;
+  }
+}
