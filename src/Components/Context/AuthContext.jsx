@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -24,9 +25,11 @@ export default function AuthContextProvider({ children }) {
 
     }
 
+
+
     return (
         <>
-            <AuthContext.Provider value={{ token, setToken, LogOut ,userData, setUserData }}>
+            <AuthContext.Provider value={{ token, setToken, LogOut, userData, setUserData }}>
                 {children}
             </AuthContext.Provider>
         </>

@@ -21,3 +21,6 @@
     @apply font-logo;
   }
 }
+.avatar *{
+  @apply size-full object-cover 
+}

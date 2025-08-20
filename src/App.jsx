@@ -3,7 +3,7 @@ import './App.css'
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Pages/Home/Home';
 import About from './Components/Pages/About/About';
-import Posts from './Components/Pages/Posts/Posts';
+// import Posts from './Components/Pages/Posts/Posts';
 import NotFound from './Components/Pages/NotFound/NotFound';
 import Login from './Components/Pages/Login/Login';
 import Register from './Components/Pages/Register/Register';
@@ -17,9 +17,12 @@ import PostDetails from './Components/Pages/PostDetails/PostDetails';
 import { ToastContainer } from 'react-toastify';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { TanStackDevtools } from '@tanstack/react-devtools';
+import { lazy, Suspense } from 'react';
 
 
 const queryClient = new QueryClient()
+
+const Posts = lazy(() => import("./Components/Pages/Posts/Posts"))
 
 function App() {
 
@@ -29,7 +32,9 @@ function App() {
     children: [{
       index: true,
       element: <ProtectedRoutes>
-        <Posts />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Posts />
+        </Suspense>
       </ProtectedRoutes>
     }, {
       path: 'about',

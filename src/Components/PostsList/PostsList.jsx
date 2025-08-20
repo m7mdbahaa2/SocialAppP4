@@ -70,7 +70,8 @@ export default function PostsList({ isHome = true }) {
                         {isLoading && <Skeleton count={10}/>}
                         {/* {isLoading && <div className='text-center'>Loading...</div>} */}
                         {data && data.posts.map((post) => <PostItem key={post._id} post={post} />)}
-                        {error && <div className='text-red-700 text-center'>{error.response.data.error} </div>}
+                        {error && <div className='text-red-700 text-center'>{error.response.data.error} </div>} 
+                        
                     </div>
                 </div>
             </section>
