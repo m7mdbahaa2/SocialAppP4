@@ -21,8 +21,7 @@ export default function AddComment({ post }) {
     })
 
     async function addComment(data) {
-
-        return axios.post(`${import.meta.env.VITE_BASE_URL}/comments`, data, {
+        return axios.post(`${import.meta.env.VITE_BASE_URL}/comments`, { post, content: data.content }, {
             headers: { token: localStorage.getItem("token") }
         })
     }
