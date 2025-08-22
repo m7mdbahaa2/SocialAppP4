@@ -19,6 +19,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { lazy, Suspense } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import ResetPassword from './Components/Pages/ResetPassword/ResetPassword';
 
 
 const queryClient = new QueryClient()
@@ -60,6 +61,11 @@ function App() {
       element: <ProtectedAuthRoutes>
         <Login />
       </ProtectedAuthRoutes>
+    }, {
+      path: 'reset',
+      element: <ProtectedRoutes>
+        <ResetPassword />
+      </ProtectedRoutes>
     }, {
       path: 'register',
       element: <ProtectedAuthRoutes>

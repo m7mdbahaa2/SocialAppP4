@@ -85,6 +85,10 @@ export default function Login() {
 
                 <AppButton isLoading={isSubmitting}>Login</AppButton>
                 {/* <Button type="submit">Submit</Button> */}
+                {/* <div>
+                    <p className='inline-block me-2'>Forget your password? </p><Link to='/reset' className='inline-block pointer-coarse: underline text-blue-700'>Reset your password</Link>
+                </div> */}
+
             </form>
         </div >
     );

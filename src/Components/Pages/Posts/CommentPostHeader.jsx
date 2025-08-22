@@ -15,6 +15,7 @@ export default function CommentPostHeader({
 
   const { register, handleSubmit } = useForm()
   const [isEditing, setIsEditing] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const { mutate: Delete } = useMutation(
     {
       mutationFn: handleDelete,
@@ -29,9 +30,12 @@ export default function CommentPostHeader({
   )
   const queryClient = useQueryClient()
 
+
+
   async function handleDelete() {
 
-    const url = isComment ? `${import.meta.env.VITE_API_URL}/comments/${mediaID}` : `${import.meta.env.VITE_API_URL}/posts/${mediaID}`
+    const url = isComment ? `${import.meta.env.VITE_API_URL}/comments/${mediaID}`
+      : `${import.meta.env.VITE_API_URL}/posts/${mediaID}`
 
 
     return await axios.delete(url, {

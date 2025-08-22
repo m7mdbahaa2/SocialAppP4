@@ -13,7 +13,7 @@ export default function Layout() {
                 <AppFooter />
             </Online>
             <Offline>
-                <h1>you are offline</h1>
+                <h1 className='bg-red-600 flex justify-center align-middle h-full'>you are offline</h1>
             </Offline>
         </div>
     )

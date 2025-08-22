@@ -46,8 +46,9 @@ export default function AppNavbar() {
                         </DropdownHeader>
 
 
-                        {token ? <><DropdownItem as={Link} to='profile'>Profile</DropdownItem>
-                            <DropdownDivider />
+                        {token ? <>
+                            <DropdownItem as={Link} to='profile'>Profile</DropdownItem><DropdownDivider />
+                            <DropdownItem as={Link} to='reset'>Change Password</DropdownItem><DropdownDivider />
                             <DropdownItem as={Button} onClick={LogOut}>Sign out</DropdownItem>
 
                         </> : <><DropdownItem as={Link} to='login'>Login</DropdownItem>
