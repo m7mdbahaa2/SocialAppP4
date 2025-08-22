@@ -40,17 +40,21 @@ export default function CommentPostHeader({
     }
   })
 
-  // UPDATE Mutation
-  const { mutate: handleCommentUpdate } = useMutation({
+  // UPDATE Mutation (comment or post)
+  const { mutate: handleUpdate } = useMutation({
     mutationFn: async (data) => {
-      return await axios.put(`${import.meta.env.VITE_API_URL}/comments/${mediaID}`, data, {
+      const url = isComment 
+        ? `${import.meta.env.VITE_API_URL}/comments/${mediaID}`
+        : `${import.meta.env.VITE_API_URL}/posts/${mediaID}`
+
+      return await axios.put(url, data, {
         headers: {
           token: localStorage.getItem("token")
         }
       })
     },
     onSuccess: () => {
-      toast.success("Comment updated successfully")
+      toast.success(isComment ? "Comment updated successfully" : "Post updated successfully")
       setIsEditing(false)
       queryClient.invalidateQueries({ queryKey: ['all-posts'] })
       queryClient.invalidateQueries({ queryKey: ['user-posts'] })
@@ -78,9 +82,9 @@ export default function CommentPostHeader({
         </header>
 
         {isEditing ? (
-          <form onSubmit={handleSubmit(handleCommentUpdate)}>
+          <form onSubmit={handleSubmit(handleUpdate)}>
             <textarea 
-              {...register('content')} 
+              {...register(isComment ? 'content' : 'body')} 
               defaultValue={body} 
               className='border border-gray-300 rounded-md p-2' 
             />
